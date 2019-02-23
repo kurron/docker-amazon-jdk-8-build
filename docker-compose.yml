@@ -1,0 +1,5 @@
+azul-jdk:
+    build: .
+    container_name: "azul-jdk-build"
+    net: "host"
+    command: java -version

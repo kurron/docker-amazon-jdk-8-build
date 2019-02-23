@@ -1,0 +1,20 @@
+# Assembles a Docker image and tags it
+---
+- hosts: localhost 
+  connection: local
+
+  vars:
+      date_output_full:
+          stdout: will be overriden below
+      unix_time: "{{ date_output_full.stdout }}"
+
+  tasks:
+    - name: Build the image
+      command: "docker-compose --verbose build"
+    - name: Tag the image 
+      command: "date +%s"
+      register: date_output_full
+    - debug: msg="{{ unix_time }}" 
+    - command: "docker tag springcloudawsecho_echo:latest kurron/spring-cloud-aws-echo:latest"
+    - command: "docker tag springcloudawsecho_echo:latest kurron/spring-cloud-aws-echo:{{ unix_time }}"
+      
