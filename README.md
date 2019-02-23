@@ -4,11 +4,10 @@ build JVM projects from within Docker.  The container is designed to
 not only allow for compilation of JVM projects but also the assembly and
 deployment of Docker images and containers.  In addition, Ansible is
 available to orchestrate the tests. If you are looking for something to
-[run a JVM application, try this](https://github.com/kurron/docker-azul-jdk-8).
+[run a JVM application, try this](https://github.com/kurron/docker-amazon-jdk-8).
 
 # Prerequisites
 * a working [Docker](http://docker.io) engine
-* a working [Docker Compose](http://docker.io) installation
 
 # Building
 Type `./build.sh` to build the image.
@@ -27,10 +26,6 @@ Use `./test.sh` to exercise the image.  A couple commands to try:
 1. `./test.sh docker-compose --version`
 1. `./test.sh ansible --version`
 1. `./test.sh ansible all --inventory='localhost,' --connection=local -m ping`
-
-## Examples
-There is an `examples` folder that has samples on how to run `Gradle`,
-run an `Ansible` playbook, create and tag a `Docker` image.
 
 ## Controlling Docker From Inside The Container
 If you need to run docker commands from inside your container, you will need

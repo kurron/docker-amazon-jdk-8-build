@@ -1,5 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-docker pull azul/zulu-openjdk:8
-docker-compose build --pull
+PROGNAME=$(basename $0)
+error_exit()
+{
+	  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+	  exit 1
+}
+
+docker build --pull --tag kurron/docker-amazon-jdk-8-build:latest  . || error_exit "Unable to build image."
 
